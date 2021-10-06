@@ -35,7 +35,8 @@ export const useCompareToolContainer = () => {
   const onReset = () => {
     form.resetFields();
     setLoaded(false);
-    setError(false)
+    setLoading(false);
+    setError(false);
     setResult(initialResults);
   };
 
