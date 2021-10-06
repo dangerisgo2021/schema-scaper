@@ -10,12 +10,14 @@ const initialResults = {
 };
 export const useCompareToolContainer = () => {
   const [form] = Form.useForm();
+  const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [results, setResult] = useState(initialResults);
   const onFinish = (values: any) => {
     console.log(values);
     setLoading(true);
+    setError(false)
     axios
       .post("/api/compare", values)
       .then(function (response) {
@@ -25,6 +27,7 @@ export const useCompareToolContainer = () => {
         setLoaded(true);
       })
       .catch(function (error) {
+        setError(true)
         console.log(error);
       });
   };
@@ -32,10 +35,12 @@ export const useCompareToolContainer = () => {
   const onReset = () => {
     form.resetFields();
     setLoaded(false);
+    setError(false)
     setResult(initialResults);
   };
 
   return {
+    error,
     form,
     loaded,
     loading,

@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import classnames from "classnames";
-import { Button, Form, Input, Skeleton, Tabs } from "antd";
+import {Alert, Button, Form, Input, Skeleton, Tabs} from "antd";
 import { useCompareToolContainer } from "compareTool/hooks/useCompareToolContainer";
 const { TabPane } = Tabs;
 const BrowserReactJsonView = dynamic(() => import("react-json-view"), {
@@ -9,6 +9,7 @@ const BrowserReactJsonView = dynamic(() => import("react-json-view"), {
 });
 export const CompareTool = ({ className = "" }) => {
   const {
+    error,
     form,
     loading,
     loaded,
@@ -48,6 +49,7 @@ export const CompareTool = ({ className = "" }) => {
           </Button>
         </Form.Item>
       </Form>
+      {error && <Alert message="Error Text" type="error" />}
       {!loaded && <Skeleton active={loading} />}
       {loaded && (
         <Tabs defaultActiveKey="1">
