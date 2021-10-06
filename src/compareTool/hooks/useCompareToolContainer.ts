@@ -1,16 +1,18 @@
 import { Form } from "antd";
 import axios from "axios";
 import { useState } from "react";
+
+const initialResults = {
+  srcSchema: undefined,
+  targetSchema: undefined,
+  difference: undefined,
+  detailedDifference: undefined,
+};
 export const useCompareToolContainer = () => {
   const [form] = Form.useForm();
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [results, setResult] = useState({
-    srcSchema: undefined,
-    targetSchema: undefined,
-    difference: undefined,
-    detailedDifference: undefined,
-  });
+  const [results, setResult] = useState(initialResults);
   const onFinish = (values: any) => {
     console.log(values);
     setLoading(true);
@@ -29,6 +31,8 @@ export const useCompareToolContainer = () => {
 
   const onReset = () => {
     form.resetFields();
+    setLoaded(false);
+    setResult(initialResults);
   };
 
   return {

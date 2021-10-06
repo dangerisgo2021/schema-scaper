@@ -6,14 +6,14 @@ import { CompareTool } from "compareTool/components/CompareTool";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>Schema Scarper</title>
         <meta name="description" content="Compare Schemas" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Layout className="layout">
+      <main style={{ height: "100%" }}>
+        <Layout style={{ height: "100%" }} className="layout">
           <Header>
             <Title type="danger">Schema Scrapper</Title>
           </Header>
@@ -25,6 +25,6 @@ export default function Home() {
           </Footer>
         </Layout>
       </main>
-    </div>
+    </>
   );
 }
