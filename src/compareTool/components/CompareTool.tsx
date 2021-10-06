@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import classnames from "classnames";
-import { Button, Form, Input, Tabs } from "antd";
+import { Button, Form, Input, Skeleton, Tabs } from "antd";
 import { useCompareToolContainer } from "compareTool/hooks/useCompareToolContainer";
 const { TabPane } = Tabs;
 const BrowserReactJsonView = dynamic(() => import("react-json-view"), {
@@ -10,6 +10,7 @@ const BrowserReactJsonView = dynamic(() => import("react-json-view"), {
 export const CompareTool = ({ className = "" }) => {
   const {
     form,
+    loading,
     loaded,
     results,
     onFinish,
@@ -47,21 +48,20 @@ export const CompareTool = ({ className = "" }) => {
           </Button>
         </Form.Item>
       </Form>
+      {!loaded && <Skeleton active={loading} />}
       {loaded && (
         <Tabs defaultActiveKey="1">
           <TabPane tab="Src Schema" key="1">
-            {loaded && <BrowserReactJsonView src={results.srcSchema} />}
+            <BrowserReactJsonView src={results.srcSchema} />
           </TabPane>
           <TabPane tab="Target Schema" key="2">
-            {loaded && <BrowserReactJsonView src={results.targetSchema} />}
+            <BrowserReactJsonView src={results.targetSchema} />
           </TabPane>
           <TabPane tab="Diff" key="3">
-            {loaded && <BrowserReactJsonView src={results.difference} />}
+            <BrowserReactJsonView src={results.difference} />
           </TabPane>
           <TabPane tab="Detailed Diff" key="4">
-            {loaded && (
-              <BrowserReactJsonView src={results.detailedDifference} />
-            )}
+            <BrowserReactJsonView src={results.detailedDifference} />
           </TabPane>
         </Tabs>
       )}
