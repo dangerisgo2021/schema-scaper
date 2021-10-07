@@ -15,7 +15,7 @@ export default function Home() {
       <main style={{ height: "100%" }}>
         <Layout style={{ height: "100%" }} className="layout">
           <Header>
-            <Title type="danger">Schema Scrapper</Title>
+            <Title type="danger">Schema</Title>
           </Header>
           <Content style={{ padding: "0 50px" }}>
             <CompareTool />
