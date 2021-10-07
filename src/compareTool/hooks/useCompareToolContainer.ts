@@ -28,6 +28,7 @@ export const useCompareToolContainer = () => {
       })
       .catch(function (error) {
         setError(true)
+        setLoading(false);
         console.log(error);
       });
   };

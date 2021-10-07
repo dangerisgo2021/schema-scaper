@@ -25,7 +25,13 @@ export default async function handler(req, res) {
   const { srcUrl, targetUrl } = req.body;
   console.log({ srcUrl, targetUrl });
 
-  const browser = await chromium.puppeteer.launch();
+  const browser = await chromium.puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: true,
+    ignoreHTTPSErrors: true,
+  });
 
   const srcSchema = await getSchema({ browser })({ url: srcUrl });
   const targetSchema = await getSchema({ browser })({ url: targetUrl });
