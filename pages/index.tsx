@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <main style={{ height: "100%" }}>
         <Layout style={{ height: "100%" }} className="layout">
-          <Header>
+          <Header style={{ padding: "1rem" }}>
             <Title type="danger">Schema</Title>
           </Header>
           <Content style={{ padding: "0 50px" }}>
