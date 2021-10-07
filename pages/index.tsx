@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Schema Scarper</title>
+        <title>Schema</title>
         <meta name="description" content="Compare Schemas" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

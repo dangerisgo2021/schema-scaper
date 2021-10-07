@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 import { diff, detailedDiff } from "deep-object-diff";
 
 const getSchema = ({ browser }) => async ({ url }) => {
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const { srcUrl, targetUrl } = req.body;
   console.log({ srcUrl, targetUrl });
 
-  const browser = await puppeteer.launch();
+  const browser = await chromium.puppeteer.launch();
 
   const srcSchema = await getSchema({ browser })({ url: srcUrl });
   const targetSchema = await getSchema({ browser })({ url: targetUrl });
