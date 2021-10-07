@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main style={{ height: "100%" }}>
-        <Layout style={{ height: "100%" }} className="layout">
+        <Layout style={{ minHeight: "100%" }} className="layout">
           <Header style={{ padding: "1rem" }}>
             <Title type="danger">Schema</Title>
           </Header>
